@@ -6,6 +6,9 @@ A PlatformIO-based robotic control system for the Pololu Romi 32U4 robot platfor
 
 **Robot Tour** is a Division C Science Olympiad event where teams design, build, program, and test an autonomous robotic vehicle to navigate a specified track and reach a target location as accurately and efficiently as possible within a set time limit.
 
+> [!IMPORTANT]
+> **READ THE LATEST SCIOLY HANDBOOK BEFORE USING THIS CODE** Check for maximum dimensions, weight limits, autonomous requirements, and allowed components.
+
 ### Key Objectives
 - Navigate a custom track with varying complexity
 - Reach target zones accurately and efficiently
@@ -78,6 +81,12 @@ Key calibration constants in `main.cpp`:
 - `NIGHTY_RIGHT_TURN_COUNT`: Right turn encoder offset (713)
 - `Chassis` parameters: wheelDiam (6.994936972), ticksPerRevolution (1440), wheelTrack (14.0081)
 
+> [!IMPORTANT]
+> **Measure your own calibration values - don't copy these.**
+> - Use **calipers** to measure wheel diameter (3 points, average them)
+> - Encoder offsets are highly surface-dependent - recalibrate at tournament venue
+> - Even ±1mm wheel error compounds massively over 50cm distances
+
 ### Movement Sequences
 Modify the `moves[]` string in `main.cpp` to define robot behavior:
 ```cpp
@@ -108,20 +117,4 @@ platformio device monitor
 3. Monitor serial output (115200 baud) for debug information
 4. Modify movement commands in `main.cpp` and re-upload as needed
 
-- Adjust `setMotorPIDcoeffs()` P and I values
-- Update encoder count targets by rotating robot 16 times and measuring offset
-- Increase control interval or adjust PID gains
-- Fine-tune multipliers based on floor surface
 
-## Notes
-
-The project includes comments for different floor surfaces:
-- NB Home (Smoothed Wood Floor): `BOTTLE_TURN_COUNT_MULTIPLIER = 1.032`
-- Gym Floor: `BOTTLE_TURN_COUNT_MULTIPLIER = 1.06`
-- Shitty unkept floor: `BOTTLE_TURN_COUNT_MULTIPLIER = 1.055`
-
-- Serial debug output provides motor speeds and encoder counts
-- Control interval: 16ms for motor updates
-- Recommend testing on identical surface before competition
-- Motor specifications: 70mm diameter wheels, 120:1 gear reduction, 12-count-per-revolution magnetic encoders
-- Maximum recommended speed: ~2 m/s (depends on battery voltage and load)
