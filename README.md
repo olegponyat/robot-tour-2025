@@ -7,7 +7,7 @@ A PlatformIO-based robotic control system for the Pololu Romi 32U4 robot platfor
 **Robot Tour** is a Division C Science Olympiad event where teams design, build, program, and test an autonomous robotic vehicle to navigate a specified track and reach a target location as accurately and efficiently as possible within a set time limit.
 
 > [!IMPORTANT]
-> **READ THE LATEST SCIOLY HANDBOOK BEFORE USING THIS CODE** Check for maximum dimensions, weight limits, autonomous requirements, and allowed components.
+> **READ THE LATEST SCIOLY HANDBOOK BEFORE USING THIS CODE.** Check for maximum dimensions, weight limits, autonomous requirements, and allowed components.
 
 ### Key Objectives
 - Navigate a custom track with varying complexity
@@ -82,7 +82,7 @@ Key calibration constants in `main.cpp`:
 - `Chassis` parameters: wheelDiam (6.994936972), ticksPerRevolution (1440), wheelTrack (14.0081)
 
 > [!IMPORTANT]
-> **Measure your own calibration values - don't copy these.**
+> **Measure your own calibration values. Don't copy these.**
 > - Use **calipers** to measure wheel diameter (3 points, average them)
 > - Encoder offsets are highly surface-dependent - recalibrate at tournament venue
 > - Even ±1mm wheel error compounds massively over 50cm distances
@@ -109,12 +109,4 @@ platformio run --target upload
 ```bash
 platformio device monitor
 ```
-
-## Usage
-
-1. Power on the robot
-2. Press button A to start executing the programmed movement sequence
-3. Monitor serial output (115200 baud) for debug information
-4. Modify movement commands in `main.cpp` and re-upload as needed
-
 
